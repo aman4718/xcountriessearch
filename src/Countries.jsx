@@ -34,6 +34,7 @@ const Countries = () => {
     fetch(API_URL)
       .then((res) => res.json())
       .then((data) => {
+        console.log('data-->',data)
         setCountries(data);
         setSearchData(data); // Initially set all countries to searchData
       })
@@ -57,7 +58,7 @@ const Countries = () => {
     }
 
     const filteredCountries = countries.filter((country) =>
-      country.name.toLowerCase().includes(searchTerm.toLowerCase())
+      country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSearchData(filteredCountries); // Update searchData with filtered countries
   };
@@ -90,13 +91,13 @@ const Countries = () => {
           justifyContent: "center",
         }}
       >
-        {searchData.map((country) => {
-          console.log("Rendering Country:", country); // Log each country being rendered
+        {searchData.map((country,index) => {
+        //  console.log("Rendering Country:", country); // Log each country being rendered
           return (
             <CountriesCard
-              name={country.name}
-              flag={country.flag}
-              key={country.abbr}
+              name={country.name.common}
+              flag={country.flags.svg}
+              key={index}
             />
           );
         })}
