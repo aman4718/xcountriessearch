@@ -24,7 +24,7 @@ function CountriesCard({ name, flag,key }) {
 }
 
 const Countries = () => {
-  const API_URL = "https://xcountries-backend.azurewebsites.net/all";
+  const API_URL = "https://restcountries.com/v3.1/all";
   const [countries, setCountries] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState([]);
